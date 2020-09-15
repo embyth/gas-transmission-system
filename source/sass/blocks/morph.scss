@@ -1,0 +1,91 @@
+.morphs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -1;
+
+  @media ($tablet) {
+    display: none;
+  }
+}
+
+.morph {
+  position: absolute;
+  z-index: -1;
+  top: -20%;
+  left: -5%;
+  margin: 150px auto 0;
+  width: 350px;
+  height: 300px;
+  border-radius: 42% 58% 32% 68% / 65% 33% 67% 35%;
+  background: linear-gradient(45deg, rgba(224, 238, 234, 1) 0%, rgba(255, 219, 235, 1) 14%, rgba(227, 238, 232, 1) 31%, rgba(212, 243, 255, 1) 68%, rgba(193, 225, 255, 1) 81%, rgba(152, 199, 255, 1) 100%);
+  animation: morph 5s linear infinite alternate, spin 15s linear infinite;
+  will-change: border-radius, transform;
+  transform-origin: 40% 30%;
+  box-shadow: 0 10px 20px 0 rgba($black, 0.3);
+
+  &--mark {
+    width: 250px;
+    height: 210px;
+    top: -30%;
+    left: 45%;
+    animation: morph 6s linear infinite alternate reverse, spin 12s ease-out infinite;
+    background: linear-gradient(-45deg, rgba(227, 238, 232, 1) 0%, rgba(255, 219, 235, 1) 6%, rgba(224, 238, 234, 1) 27%, rgba(194, 193, 255, 1) 50%, rgba(218, 218, 255, 1) 79%, rgba(212, 243, 255, 1) 100%);
+  }
+
+  &--scott {
+    width: 350px;
+    height: 310px;
+    top: -35%;
+    left: 20%;
+    animation: morph 5s linear infinite alternate, spin 20s ease-out infinite reverse;
+    background: linear-gradient(45deg, rgba(227, 238, 232, 1) 0%, rgba(210, 227, 255, 1) 16%, rgba(224, 238, 234, 1) 33%, rgba(255, 205, 228, 1) 55%, rgba(226, 226, 255, 1) 81%, rgba(212, 243, 255, 1) 100%);
+  }
+
+  &--tom {
+    width: 250px;
+    height: 200px;
+    top: 25%;
+    left: -5%;
+    animation: morph 4s linear infinite alternate, spin 13s ease-out infinite reverse;
+    background: linear-gradient(75deg, rgba(210, 189, 245, 1) 0%, rgba(255, 213, 231, 1) 20%, rgba(227, 238, 232, 1) 44%, rgba(210, 227, 255, 1) 73%, rgba(198, 239, 255, 1) 100%);
+  }
+
+  &--travis {
+    width: 100px;
+    height: 80px;
+    top: -20%;
+    left: 70%;
+    animation: morph 4s linear infinite alternate, spin 11s ease-in infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 42% 58% 32% 68% / 65% 33% 67% 35%;
+  }
+
+  20% {
+    border-radius: 66% 34% 48% 52% / 50% 58% 42% 50%;
+  }
+
+  50% {
+    border-radius: 56% 44% 44% 56% / 46% 63% 37% 54%;
+  }
+
+  70% {
+    border-radius: 44% 56% 32% 68% / 65% 33% 67% 35%;
+  }
+
+  100% {
+    border-radius: 65% 33% 67% 35% / 42% 58% 32% 68%;
+  }
+}

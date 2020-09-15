@@ -1,0 +1,151 @@
+.results {
+  padding: 70px 0 25px 100px;
+
+  @media ($tablet) {
+    padding: 70px 0 25px 50px;
+  }
+
+  @media ($mobile) {
+    padding: 60px 0 25px;
+  }
+}
+
+.data__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+
+  @media ($mobile) {
+    margin-top: 0;
+  }
+}
+
+.data__table-head {
+  text-align: center;
+  font-weight: font-weight(bold);
+  text-transform: uppercase;
+  font-size: font-size(table-head-d);
+  color: $font-color-table;
+  line-height: font-lh(table-head-d);
+
+  @media ($tablet) {
+    font-size: font-size(table-head-m);
+    line-height: font-lh(table-head-m);
+  }
+
+  @media ($mobile) {
+    .data__table-cell {
+      &--marking {
+        display: none;
+      }
+
+      &--value {
+        width: 35%;
+      }
+    }
+  }
+}
+
+.data__table-cell {
+  &--parameter {
+    width: 60%;
+  }
+
+  &--marking {
+    width: 13%;
+  }
+
+  &--value {
+    width: 13%;
+  }
+
+  &--dimension {
+    width: 14%;
+  }
+
+  @media ($tablet) {
+    &--parameter {
+      width: 50%;
+    }
+
+    &--marking {
+      width: 18%;
+    }
+
+    &--value {
+      width: 17%;
+    }
+
+    &--dimension {
+      width: 15%;
+    }
+  }
+
+  @media ($mobile) {
+    &--parameter {
+      width: 65%;
+    }
+
+    &--marking {
+      width: 15%;
+    }
+
+    &--value {
+      width: 20%;
+    }
+
+    &--dimension {
+      display: none;
+    }
+  }
+}
+
+.data__table-body {
+  .data__table-cell {
+    font-weight: font-weight(regular);
+    font-size: font-size(table-cell-d);
+    color: $font-color-table;
+    line-height: font-lh(table-cell-d);
+    text-align: center;
+
+    &--parameter {
+      text-align: left;
+    }
+
+    &--value {
+      font-weight: font-weight(bold);
+    }
+
+    @media ($tablet) {
+      font-size: font-size(table-cell-m);
+      line-height: font-lh(table-cell-m);
+    }
+  }
+}
+
+.data__table-row {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 0;
+  align-items: center;
+
+  &--full {
+    text-align: center;
+    justify-content: center;
+    font-weight: font-weight(bold);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(60deg, #12c2e9, #c471ed, #f64f59);
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    animation: textGradient 3s infinite alternate;
+  }
+}

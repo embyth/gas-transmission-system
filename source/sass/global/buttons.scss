@@ -1,1 +1,120 @@
 // Buttons
+.button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  appearance: none;
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &--primary {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 30px;
+    text-transform: uppercase;
+    background: $bg-color-button--primary;
+    z-index: 0;
+    overflow: hidden;
+    color: $font-color-button--primary;
+    transition: background-color 0.3s ease;
+    text-align: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(210, 189, 245, 1) 0%, rgba(255, 213, 231, 1) 100%);
+      border-radius: 30px;
+      border: none;
+      z-index: -1;
+      transition: width 0.3s ease;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background: transparent;
+      color: $font-color-button--secondary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      opacity: 30%;
+    }
+  }
+
+  &--secondary {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 50px;
+    border: none;
+    box-shadow: inset 0 0 0 1px $black;
+    border-radius: 30px;
+    text-transform: uppercase;
+    background: $bg-color-button--secondary;
+    z-index: 0;
+    overflow: hidden;
+    color: $font-color-button--secondary;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(210, 189, 245, 1) 0%, rgba(255, 213, 231, 1) 100%);
+      border-radius: 30px;
+      border: none;
+      z-index: -1;
+      transition: width 0.3s ease;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: $font-color-button--secondary;
+      box-shadow: none;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      opacity: 30%;
+    }
+  }
+}

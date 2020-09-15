@@ -1,21 +1,13 @@
 // Media BreakPoints
 $mobile-width: 320px;
-$mobile-l-width: 425px;
+$max-mobile-width: 767px;
 $tablet-width: 768px;
-$desktop-width: 1150px;
+$max-tablet-width: 1279px;
+$desktop-width: 1280px;
 
-$mobile-l-max-width: ($tablet-width - 1);
-
-$retina-dpi: 144dpi;
-
-$mobile: "min-width: #{$mobile-width}";
-$mobile-l: "min-width: #{$mobile-l-width}";
-$tablet: "min-width: #{$tablet-width}";
 $desktop: "min-width: #{$desktop-width}";
-
-$mobile-l-only: "min-width: #{$mobile-l-width}) and (max-width: #{$mobile-l-max-width}";
-
-$retina: "min-resolution: #{$retina-dpi}";
+$tablet: "max-width: #{$max-tablet-width}";
+$mobile: "max-width: #{$max-mobile-width}";
 
 // Padding Variables
 $paddings: (
@@ -30,29 +22,125 @@ $font-stack: (
 );
 
 $font-weights: (
-  light: 300,
   regular: 400,
   bold: 700
 );
 
 $line-height-base: 22px;
+$line-height-link: 24px;
+$line-height-button-d: 24px;
+$line-height-button-m: 22px;
+$line-height-h1-d: 46px;
+$line-height-h1-t: 46px;
+$line-height-h1-m: 34px;
+$line-height-h2-d: 42px;
+$line-height-h2-t: 42px;
+$line-height-h2-m: 30px;
+$line-height-label-d: 20px;
+$line-height-label-m: 18px;
+$line-height-input-d: 20px;
+$line-height-input-m: 18px;
+$line-height-table-head-d: 22px;
+$line-height-table-head-m: 20px;
+$line-height-table-cell-d: 20px;
+$line-height-table-cell-m: 18px;
 
 $font-line-height: (
   base: $line-height-base,
+  link: $line-height-link,
+  button-d: $line-height-button-d,
+  button-m: $line-height-button-m,
+  h1-d: $line-height-h1-d,
+  h1-t: $line-height-h1-t,
+  h1-m: $line-height-h1-m,
+  h2-d: $line-height-h2-d,
+  h2-t: $line-height-h2-t,
+  h2-m: $line-height-h2-m,
+  label-d: $line-height-label-d,
+  label-m: $line-height-label-m,
+  input-d: $line-height-input-d,
+  input-m: $line-height-input-m,
+  table-head-d: $line-height-table-head-d,
+  table-head-m: $line-height-table-head-m,
+  table-cell-d: $line-height-table-cell-d,
+  table-cell-m: $line-height-table-cell-m,
 );
 
 $font-size-base: 14px;
+$font-size-button-d: 16px;
+$font-size-button-m: 12px;
+$font-size-intro-d: 16px;
+$font-size-intro-m: 14px;
+$font-size-aside-d: 16px;
+$font-size-aside-m: 14px;
+$font-size-h1-d: 34px;
+$font-size-h1-t: 30px;
+$font-size-h1-m: 22px;
+$font-size-h2-d: 26px;
+$font-size-h2-t: 24px;
+$font-size-h2-m: 16px;
+$font-size-label-d: 14px;
+$font-size-label-m: 12px;
+$font-size-input-d: 14px;
+$font-size-input-m: 12px;
+$font-size-table-head-d: 16px;
+$font-size-table-head-m: 12px;
+$font-size-table-cell-d: 14px;
+$font-size-table-cell-m: 12px;
 
 $font-sizes: (
   base: $font-size-base,
+  button-d: $font-size-button-d,
+  button-m: $font-size-button-m,
+  intro-d: $font-size-intro-d,
+  intro-m: $font-size-intro-m,
+  aside-d: $font-size-aside-d,
+  aside-m: $font-size-aside-m,
+  h1-d: $font-size-h1-d,
+  h1-t: $font-size-h1-t,
+  h1-m: $font-size-h1-m,
+  h2-d: $font-size-h2-d,
+  h2-t: $font-size-h2-t,
+  h2-m: $font-size-h2-m,
+  label-d: $font-size-label-d,
+  label-m: $font-size-label-m,
+  input-d: $font-size-input-d,
+  input-m: $font-size-input-m,
+  table-head-d: $font-size-table-head-d,
+  table-head-m: $font-size-table-head-m,
+  table-cell-d: $font-size-table-cell-d,
+  table-cell-m: $font-size-table-cell-m,
 );
 
 // Color Variables
 $black: #000000;
 $white: #ffffff;
+$light-grey: #f4f4f4;
+$orange: #f37335;
+$purple: #8360c3;
 
-$bg-color-body: $white;
+$bg-color-body: $light-grey;
+$bg-color-aside: $light-grey;
+$bg-color-button--primary: $black;
+$bg-color-button--secondary: transparent;
+$bg-color-hamburger: $black;
+$bg-color-hamburger--hover: $white;
+
+$font-color-base: $black;
+$font-color-heading: $black;
+$font-color-label: $black;
+$font-color-input: $black;
+$font-color-table: $black;
+$font-color-link: $black;
+$font-color-link--hover: $purple;
+$font-color-button: $black;
+$font-color-button--current: $orange;
+$font-color-button--hover: $purple;
+$font-color-button--primary: $white;
+$font-color-button--secondary: $black;
 
 $border-color-button: $black;
 
-$font-color-base: $black;
+$fill-svg-donate: $black;
+$fill-svg: $black;
+$fill-svg--hover: $white;

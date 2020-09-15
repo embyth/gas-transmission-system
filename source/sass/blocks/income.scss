@@ -1,0 +1,190 @@
+.income-data {
+  padding: 70px 0 25px 100px;
+
+  @media ($tablet) {
+    padding: 70px 0 25px 50px;
+  }
+
+  @media ($mobile) {
+    padding: 60px 0 25px;
+  }
+}
+
+.data__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.data__fieldset-replacer {
+  display: flex;
+  flex-flow: row wrap;
+
+  @media ($tablet) {
+    justify-content: space-between;
+  }
+}
+
+.data__container {
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  &--results {
+    width: 80%;
+  }
+
+  @media ($tablet) {
+    width: 100%;
+
+    &--results {
+      width: 100%;
+    }
+  }
+
+  @media ($mobile) {
+    flex-flow: column nowrap;
+  }
+}
+
+.data__item {
+  width: 45%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-top: 20px;
+    margin-left: auto;
+  }
+
+  @media ($mobile) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.data__label {
+  display: inline-block;
+  font-size: font-size(label-d);
+  color: $font-color-label;
+  line-height: font-lh(label-d);
+  font-weight: font-weight(regular);
+  margin-bottom: 5px;
+}
+
+.data__item-input {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(60deg, #12c2e9, #c471ed, #f64f59);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  animation: textGradient 3s infinite alternate;
+  border-radius: 30px;
+  padding: 1px;
+  font-size: font-size(input-d);
+  color: $font-color-input;
+  line-height: font-lh(input-d);
+  font-weight: font-weight(regular);
+  margin-top: auto;
+
+  &--select {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    .select-wrapper {
+      position: relative;
+      width: 50%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: black transparent transparent transparent;
+      }
+
+      &--gpu {
+        width: calc(50% - 1px);
+        margin-right: 1px;
+      }
+    }
+  }
+}
+
+.data__input {
+  padding: 7px 80px 7px 55px;
+  border: none;
+  border-radius: 30px;
+  background-color: $bg-color-body;
+  width: 100%;
+  box-shadow: 0 0 0 1px black;
+  transition: box-shadow 0.3s ease;
+
+  &[type="number"] {
+    appearance: none;
+  }
+
+  &--error {
+    box-shadow: 0 0 0 1px red;
+  }
+
+  &--select {
+    appearance: none;
+    width: 100%;
+    padding: 7px 15px;
+  }
+
+  &--gpu {
+    border-radius: 30px 0 0 30px;
+  }
+
+  &--superchargers {
+    border-radius: 0 30px 30px 0;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.data__input--definition,
+.data__input--dimension {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-style: normal;
+}
+
+.data__input--dimension {
+  left: unset;
+  right: 10px;
+}
+
+.data__button {
+  width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}

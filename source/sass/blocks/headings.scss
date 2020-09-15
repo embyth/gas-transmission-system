@@ -1,0 +1,40 @@
+.site-heading {
+  text-transform: uppercase;
+  font-size: font-size(h1-d);
+  font-weight: font-weight(bold);
+  color: $font-color-heading;
+  line-height: font-lh(h1-d);
+  margin: 40px 0;
+  padding: 0;
+
+  @media ($tablet) {
+    font-size: font-size(h1-t);
+    line-height: font-lh(h1-t);
+  }
+
+  @media ($mobile) {
+    font-size: font-size(h1-m);
+    line-height: font-lh(h1-m);
+    margin: 20px 0;
+  }
+}
+
+.section-heading {
+  margin: 30px 0;
+  padding: 0;
+  font-weight: font-weight(bold);
+  font-size: font-size(h2-d);
+  line-height: font-lh(h2-d);
+  text-transform: uppercase;
+  color: $font-color-heading;
+
+  @media ($tablet) {
+    font-size: font-size(h2-t);
+    line-height: font-lh(h2-t);
+  }
+
+  @media ($mobile) {
+    font-size: font-size(h2-m);
+    line-height: font-lh(h2-m);
+  }
+}

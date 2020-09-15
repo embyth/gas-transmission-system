@@ -1,0 +1,59 @@
+.intro {
+  width: 100%;
+  padding: 100px 0 50px 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  @media ($tablet) {
+    padding: 70px 0 25px 50px;
+  }
+
+  @media ($mobile) {
+    padding: 60px 0 25px;
+  }
+}
+
+.intro__text {
+  font-size: font-size(intro-d);
+  line-height: 1.7;
+  padding: 20px 0;
+  width: 70%;
+  margin-bottom: 70px;
+
+  @media ($tablet) {
+    font-size: font-size(intro-m);
+    width: 80%;
+    line-height: 2;
+  }
+
+  @media ($mobile) {
+    width: 100%;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+}
+
+.intro__buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  .button--secondary {
+    margin-right: 60px;
+  }
+
+  @media ($mobile) {
+    flex-flow: column nowrap;
+
+    .button--secondary {
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
+
+    .button {
+      width: 100%;
+    }
+  }
+}
