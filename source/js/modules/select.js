@@ -16,6 +16,14 @@
         }
       });
     });
+
+    if (arr.includes('custom')) {
+      window.modal.showOpener();
+      window.modal.open();
+    } else {
+      window.modal.hideOpener();
+      window.modal.close();
+    }
   };
 
   // Функція управління полем вибору приводу
@@ -26,6 +34,14 @@
     options.forEach(function (option) {
       if (option.value === string) option.selected = true;
     });
+
+    if (string === 'custom') {
+      window.modal.showOpener();
+      window.modal.open();
+    } else {
+      window.modal.hideOpener();
+      window.modal.close();
+    }
   };
 
   // Оброблювач події зміни на полі вибору приводу
