@@ -51,16 +51,16 @@
     // Математичні моделі нагнітача
 
     // Коефіцієнт математичної можелі с
-    getMathCoefC: function (eps1, eps2, eps3, Q1, Q2) {
-      return (eps1 - 2 * eps2 + eps3) / 2 * (Q2 - Q1);
+    getMathCoefC: function (x1, x2, x3, Q1, Q2) {
+      return (x1 - 2 * x2 + x3) / (2 * Math.pow((Q2 - Q1), 2));
     },
     // Коефіцієнт математичної можелі b
-    getMathCoefB: function (eps1, eps2, Q1, Q2, coefC) {
-      return (eps1 - eps2) / (Q1 - Q2) - coefC * (Q1 - Q2);
+    getMathCoefB: function (x1, x2, Q1, Q2, coefC) {
+      return (x1 - x2) / (Q1 - Q2) - coefC * (Q1 + Q2);
     },
     // Коефіцієнт математичної можелі a
-    getMathCoefA: function (eps1, Q1, coefB, coefC) {
-      return eps1 - coefB * Q1 - coefC * Math.pow(Q1, 2);
+    getMathCoefA: function (x1, Q1, coefB, coefC) {
+      return x1 - coefB * Q1 - coefC * Math.pow(Q1, 2);
     },
     // Середня продуктивність
     getQ2: function (Q1, Q3) {
@@ -99,7 +99,8 @@
     },
     // Фактичний ступінь підвищення тиску нагнітача
     getActualPressureIncrease: function (epsNom, etaPol, reducedRelativeSpeed) {
-      return Math.pow((Math.pow(epsNom, (1.31 - 1) / (1.31 * etaPol)) - 1) * Math.pow(reducedRelativeSpeed, 2) + 1), (1.31 * etaPol) / (1.31 - 1);
+      var beta = (1.31 - 1) / (1.31 * etaPol);
+      return Math.pow(((Math.pow(epsNom, beta) - 1) * Math.pow(reducedRelativeSpeed, 2) + 1), (1 / beta));
     },
     // Абсолютний тиск газу на виході
     getOutletPressure: function (eps, Pvx) {
@@ -144,12 +145,20 @@
     getActualConsumption: function (Qks, Qself) {
       return Qks - Qself;
     },
+    // Фактичний абсолютний тиск на початку лінійної ділянки
+    getStartingPressure: function (Pvux, dPvux, dPox) {
+      return Pvux - dPvux - dPox;
+    },
 
     // Теплогідравлічний розрахунок ділянки газопроводу
 
+    // Внутрішній діаметр в метрах
+    getInnerDiameter: function (Dz, bSt) {
+      return +((Dz - 2 * bSt) * Math.pow(10, -3)).toFixed(3);
+    },
     // Тиск в кінці перегону між КС для рівнинного газопроводу
-    getEndingPressure: function (Ppf, Q, la, delta, zcp, Tcp, L, E, Dz, bSt) {
-      return Math.sqrt(Math.pow(Ppf, 2) - (Math.pow(Q, 2) * la * delta * zcp * Tcp * L) / (Math.pow(105.087 * E, 2) * Math.pow(Dz - 2 * bSt, 5)));
+    getEndingPressure: function (Ppf, Q, la, delta, zcp, Tcp, L, E, d) {
+      return Math.sqrt(Math.pow(Ppf, 2) - (Math.pow(Q, 2) * la * delta * zcp * Tcp * L) / (Math.pow(105.087 * E, 2) * Math.pow(d, 5)));
     },
     // Середнє значення тиску газу на ділянці газопроводу
     getAveragePressure: function (Pp, Pk) {
@@ -165,23 +174,23 @@
     },
     // Параметр Шухова
     getShukhovFactor: function (K, Dz, Cp, Q, delta) {
-      return (0.225 * K * Dz) / (Cp * Q * delta);
+      return (0.225 * K * Dz / 1000) / (Cp * Q * delta);
     },
     // Зведена температура грунту
     getErectedTempreture: function (Tgr, Dj, Pp, Pk, al, L, Pcp) {
       return Tgr - (Dj * (Math.pow(Pp, 2) - Math.pow(Pk, 2))) / (2 * al * L * Pcp);
     },
     // Середнє значення температури газу на ділянці газопроводу
-    getAverageTemperature: function (Tgr, Tp, Tzv, al, L) {
-      return Tgr + (Tp - Tzv) / (al * L) * (1 - Math.exp(-al * L));
+    getAverageTemperature: function (Tp, Tzv, al, L) {
+      return Tzv + (Tp - Tzv) / (al * L) * (1 - Math.exp(-al * L));
     },
     // Число Рейнольдса в газопроводі
     getReynoldsFactor: function (Q, delta, d) {
       return 17.75 * (Q * delta) / (d * 12.5 * Math.pow(10, -6));
     },
     // Коефіцієнт гідравлічного опору в газопроводі
-    getHydraulicResistCoef: function (Re, ke, d) {
-      return 0.067 * Math.pow((158 / Re + (2 * ke) / d), 0.2);
+    getHydraulicResistCoef: function (Re, d) {
+      return 0.067 * Math.pow((158 / Re + (2 * 3 * Math.pow(10, -5)) / d), 0.2);
     },
     // Температура газу у кінці ділянки газопроводу
     getEndingTemperature: function (Tzv, Tp, al, L) {
