@@ -74,6 +74,70 @@
   line-height: font-lh(label-d);
   font-weight: font-weight(regular);
   margin-bottom: 5px;
+
+  &[for="gpu"] {
+    padding-right: 30px;
+  }
+}
+
+.data__modal-opener {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  @media ($tablet) {
+    right: unset;
+    left: -30px;
+  }
+
+  @media ($mobile) {
+    top: -20px;
+    transform: none;
+    right: 15px;
+    left: unset;
+  }
+
+  &--svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    fill: $fill-svg;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #000;
+    z-index: -1;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+
+    .data__modal-opener--svg {
+      fill: $fill-svg--hover;
+    }
+
+    &::after {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &:active {
+    opacity: 30%;
+  }
 }
 
 .data__item-input {
