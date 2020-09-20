@@ -78,8 +78,22 @@
     superchargersSelectNode.addEventListener('change', superchargersSelectChangeHandler);
   };
 
+  // Перевірка на "Інший" нагнітач
+  var checkSelectValue = function () {
+    var gpuSelectNode = document.querySelector('#gpu');
+    var superchargersSelectNode = document.querySelector('#superchargers');
+    var status = false;
+
+    if (gpuSelectNode.value === 'custom' && superchargersSelectNode.value === 'custom') {
+      status = true;
+    }
+
+    return status;
+  };
+
   // Передаємо функцію у глобальну область видимості
   window.select = {
-    handle: selectHandler
+    handle: selectHandler,
+    check: checkSelectValue
   };
 })();
