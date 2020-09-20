@@ -176,7 +176,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: #000;
+    background-color: $bg-color-button--primary;
     z-index: -1;
     transition: width 0.3s ease, height 0.3s ease;
   }
