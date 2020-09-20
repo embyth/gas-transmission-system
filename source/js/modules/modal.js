@@ -68,6 +68,8 @@
 
   // Оброблювач кліку на кнопці "Підтвердження"
   var confirmButtonClickHandler = function () {
+    if (!window.validation.isModalDataValid()) return;
+
     var modal = document.querySelector('.modal');
     var Pvx2 = document.querySelector('.data__input--custom-inlet-pressure2').value;
     var Pvx3 = document.querySelector('.data__input--custom-inlet-pressure3').value;
