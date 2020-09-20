@@ -158,7 +158,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">CH<sub>4</sub></dfn>
                     <input type="number" class="data__input data__input--methane" id="methane" placeholder="95.37"
-                      min="0" max="100" autocomplete="off" required>
+                      min="0" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -168,7 +168,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">C<sub>2</sub>H<sub>6</sub></dfn>
                     <input type="number" class="data__input data__input--ethane" id="ethane" placeholder="2.63" min="0"
-                      max="100" autocomplete="off" required>
+                      max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -178,7 +178,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">C<sub>3</sub>H<sub>8</sub></dfn>
                     <input type="number" class="data__input data__input--propane" id="propane" placeholder="0.85"
-                      min="0" max="100" autocomplete="off" required>
+                      min="0" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -188,7 +188,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">C<sub>4</sub>H<sub>10</sub></dfn>
                     <input type="number" class="data__input data__input--butane" id="butane" placeholder="0.27" min="0"
-                      max="100" autocomplete="off" required>
+                      max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -198,7 +198,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">C<sub>5</sub>H<sub>12</sub></dfn>
                     <input type="number" class="data__input data__input--pentane" id="pentane" placeholder="0.07"
-                      min="0" max="100" autocomplete="off" required>
+                      min="0" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -208,7 +208,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">N<sub>2</sub></dfn>
                     <input type="number" class="data__input data__input--nitrogen" id="nitrogen" placeholder="0.62"
-                      min="0" max="100" autocomplete="off" required>
+                      min="0" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -218,7 +218,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">CO<sub>2</sub></dfn>
                     <input type="number" class="data__input data__input--carbon-dioxide" id="carbon-dioxide"
-                      placeholder="0.19" min="0" max="100" autocomplete="off" required>
+                      placeholder="0.19" min="0" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -238,7 +238,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">δ<sub>ст</sub></dfn>
                     <input type="number" class="data__input data__input--wall" id="wall" placeholder="18.7" min="5"
-                      max="20" autocomplete="off" required>
+                      max="20" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">мм</span>
                   </div>
                 </div>
@@ -248,7 +248,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">L</dfn>
                     <input type="number" class="data__input data__input--length" id="length" placeholder="128.4"
-                      min="50" max="170" autocomplete="off" required>
+                      min="50" max="170" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">км</span>
                   </div>
                 </div>
@@ -259,7 +259,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">Q</dfn>
                     <input type="number" class="data__input data__input--consumption" id="consumption"
-                      placeholder="76.4" min="20" max="150" autocomplete="off" required>
+                      placeholder="76.4" min="20" max="150" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">млн. м<sup>3</sup>/д</span>
                   </div>
                 </div>
@@ -270,7 +270,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">E</dfn>
                     <input type="number" class="data__input data__input--hydraulic-coef" id="hydraulic-coef"
-                      placeholder="95" min="1" max="100" autocomplete="off" required>
+                      placeholder="95" min="1" max="100" step="0.01" autocomplete="off" required>
                     <span class="data__input--dimension">%</span>
                   </div>
                 </div>
@@ -280,7 +280,7 @@
                   <div class="data__item-input">
                     <dfn class="data__input--definition">P<sub>атм</sub></dfn>
                     <input type="number" class="data__input data__input--pressure-atm" id="pressure-atm"
-                      placeholder="0.10" min="0.08" max="0.150" step="0.0001" autocomplete="off" required>
+                      placeholder="0.10" min="0.070" max="0.150" step="0.0001" autocomplete="off" required>
                     <span class="data__input--dimension">МПа</span>
                   </div>
                 </div>
@@ -296,7 +296,7 @@
                 </div>
 
                 <div class="data__item">
-                  <label for="temperature-inlet" class="data__label">Температура газу вході в нагнітачі КС</label>
+                  <label for="temperature-inlet" class="data__label">Температура газу на вході в нагнітачі КС</label>
                   <div class="data__item-input">
                     <dfn class="data__input--definition">T<sub>вх</sub></dfn>
                     <input type="number" class="data__input data__input--temperature-inlet" id="temperature-inlet"
@@ -351,21 +351,23 @@
                 <div class="data__item">
                   <label for="gpu" class="data__label">Вибір газоперекачувального агрегату</label>
                   <div class="data__item-input data__item-input--select">
+                    <button type="button" class="button data__modal-opener visually-hidden"
+                      title="Відкрити параметри ГПА">
+                      <svg class="data__modal-opener--svg" width="20" height="20">
+                        <use xlink:href="img/sprite.svg#icon-show"></use>
+                      </svg>
+                    </button>
                     <div class="select-wrapper select-wrapper--gpu">
                       <select name="gpu" id="gpu" class="data__input data__input--select data__input--gpu" required>
-                        <option value="" selected disabled>ГПА</option>
-                        <option value="gtk-5">ГТК-5</option>
-                        <option value="gt-750-6">ГТ-750-6</option>
-                        <option value="gt-6-750">ГТ-6-750</option>
-                        <option value="gtn-6">ГТН-6</option>
+                        <option value="" selected disabled>Привід</option>
                         <option value="gtn-16">ГТН-16</option>
-                        <option value="gtk-10-2">ГТК-10-2</option>
                         <option value="gtk-10-4">ГТК-10-4</option>
                         <option value="gtn-25">ГТН-25</option>
-                        <option value="gpa-c-16-76">ГПА-Ц-16/76</option>
+                        <option value="nc-16-76-1.45">НЦ-16/76-1,45</option>
                         <option value="gtk-10i">ГТК-10И</option>
                         <option value="gtn-25i">ГТН-25И</option>
                         <option value="gtk-25i">ГТК-25И</option>
+                        <option value="custom">Інший</option>
                       </select>
                     </div>
 
@@ -373,24 +375,19 @@
                       <select name="superchargers" id="superchargers"
                         class="data__input data__input--select data__input--superchargers" required>
                         <option value="" selected disabled>Нагнітач</option>
-                        <option value="260-13-2">260-13-2</option>
-                        <option value="370-17-1">370-17-1</option>
-                        <option value="370-14-1">370-14-1</option>
-                        <option value="n-300-1.23">Н-300-1,23</option>
                         <option value="n-16-76-1.37">Н-16-76-1,37</option>
                         <option value="n-16-76-1.44">Н-16-76-1,44</option>
-                        <option value="n-16-76-1.25">Н-16-76-1,23</option>
-                        <option value="520-12-1">520-12-1</option>
-                        <option value="370-18-1">370-18-1</option>
                         <option value="235-21-1">235-21-1</option>
                         <option value="650-21-2">650-21-2</option>
                         <option value="650-22-2">650-22-2</option>
-                        <option value="nc-16-76-1.45">НЦ-16/76-1,45</option>
+                        <option value="gpa-c-16-76">ГПА-Ц-16/76</option>
                         <option value="rf2bb-30">RF2BB-30</option>
                         <option value="cdp-224">CDP-224</option>
                         <option value="pcl-802-24">PCL-802/24</option>
                         <option value="pcl-1002-40">PCL-1002/40</option>
                         <option value="pcl-804-2">PCL-804-2</option>
+                        <option value="655-r2">655 P2</option>
+                        <option value="custom">Інший</option>
                       </select>
                     </div>
                   </div>
@@ -423,7 +420,7 @@
               </thead>
               <tbody class="data__table-body">
                 <tr class="data__table-row data__table-row--full">
-                  <td colspan="4">Результати розрахуноку фізичних властивостей природного газу</td>
+                  <td colspan="4">Результати розрахунку фізичних властивостей природного газу</td>
                 </tr>
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Молярна маса газу</td>
@@ -489,7 +486,7 @@
                   <td class="data__table-cell data__table-cell--parameter">Наявна потужність газоперекачувального
                     агрегату</td>
                   <td class="data__table-cell data__table-cell--marking">N<sub>e</sub><sup>p</sup></td>
-                  <td class="data__table-cell data__table-cell--value data__table-cell--available power"></td>
+                  <td class="data__table-cell data__table-cell--value data__table-cell--available-power"></td>
                   <td class="data__table-cell data__table-cell--dimension">кВт</td>
                 </tr>
                 <tr class="data__table-row data__table-row--full">
@@ -499,7 +496,7 @@
                   <td class="data__table-cell data__table-cell--parameter">Коеф. математичної моделі ступеня
                     підвищення
                     тиску</td>
-                  <td class="data__table-cell data__table-cell--marking">с<sub>1</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">с<sub>1</sub>·10<sup>6</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--coef-c1"></td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
                 </tr>
@@ -507,7 +504,7 @@
                   <td class="data__table-cell data__table-cell--parameter">Коеф. математичної моделі ступеня
                     підвищення
                     тиску</td>
-                  <td class="data__table-cell data__table-cell--marking">b<sub>1</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">b<sub>1</sub>·10<sup>3</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--coef-b1"></td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
                 </tr>
@@ -522,14 +519,14 @@
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Коефіцієнт математичної моделі політропного
                     коефіцієнта корисної дії</td>
-                  <td class="data__table-cell data__table-cell--marking">с<sub>2</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">с<sub>2</sub>·10<sup>6</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--coef-c2"></td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
                 </tr>
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Коефіцієнт математичної моделі політропного
                     коефіцієнта корисної дії</td>
-                  <td class="data__table-cell data__table-cell--marking">b<sub>2</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">b<sub>2</sub>·10<sup>3</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--coef-b2"></td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
                 </tr>
@@ -543,7 +540,7 @@
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Коеф. математичної моделі зведеної
                     внутрішньої потужності</td>
-                  <td class="data__table-cell data__table-cell--marking">c<sub>3</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">c<sub>3</sub>·10<sup>4</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--coef-c3"></td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
                 </tr>
@@ -722,7 +719,7 @@
                   <td class="data__table-cell data__table-cell--parameter">Витрата газу на технологічні потреби та
                     технічні втрати КС
                   </td>
-                  <td class="data__table-cell data__table-cell--marking">Q<sub>тп</sub></td>
+                  <td class="data__table-cell data__table-cell--marking">Q<sub>тп</sub>·10<sup>3</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--tech-consumption-full">
                   </td>
                   <td class="data__table-cell data__table-cell--dimension">млн. м<sup>3</sup>/д</td>
@@ -762,15 +759,6 @@
                   <td class="data__table-cell data__table-cell--value data__table-cell--start-temperature">
                   </td>
                   <td class="data__table-cell data__table-cell--dimension">K</td>
-                </tr>
-                <tr class="data__table-row">
-                  <td class="data__table-cell data__table-cell--parameter">Абсолютний тиск газу у кінці лінійної
-                    ділянки
-                  </td>
-                  <td class="data__table-cell data__table-cell--marking">Р<sub>к</sub></td>
-                  <td class="data__table-cell data__table-cell--value data__table-cell--end-pressure">
-                  </td>
-                  <td class="data__table-cell data__table-cell--dimension">МПа</td>
                 </tr>
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Середній значення тиску газу
@@ -818,7 +806,7 @@
                     ділянці
                   </td>
                   <td class="data__table-cell data__table-cell--marking">Т<sub>ср</sub></td>
-                  <td class="data__table-cell data__table-cell--value data__table-cell--erected-temperature">
+                  <td class="data__table-cell data__table-cell--value data__table-cell--average-temperature">
                   </td>
                   <td class="data__table-cell data__table-cell--dimension">К</td>
                 </tr>
@@ -833,7 +821,7 @@
                 <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Число Рейнольдса
                   </td>
-                  <td class="data__table-cell data__table-cell--marking">Re·10&nbsp;<sup>-6</sup></td>
+                  <td class="data__table-cell data__table-cell--marking">Re·10<sup>-6</sup></td>
                   <td class="data__table-cell data__table-cell--value data__table-cell--reynolds">
                   </td>
                   <td class="data__table-cell data__table-cell--dimension"></td>
@@ -856,6 +844,24 @@
                   <td class="data__table-cell data__table-cell--dimension">МПа</td>
                 </tr>
                 <tr class="data__table-row">
+                  <td class="data__table-cell data__table-cell--parameter">Необхідний абсолютний тиск газу в кінці
+                    лінійної ділянки
+                  </td>
+                  <td class="data__table-cell data__table-cell--marking">Р<sub>кн</sub></td>
+                  <td class="data__table-cell data__table-cell--value data__table-cell--end-pressure">
+                  </td>
+                  <td class="data__table-cell data__table-cell--dimension">МПа</td>
+                </tr>
+                <tr class="data__table-row">
+                  <td class="data__table-cell data__table-cell--parameter">Фактичний абсолютний тиск газу в кінці
+                    газопроводу
+                  </td>
+                  <td class="data__table-cell data__table-cell--marking">P<sub>кф</sub></td>
+                  <td class="data__table-cell data__table-cell--value data__table-cell--actual-end-pressure">
+                  </td>
+                  <td class="data__table-cell data__table-cell--dimension">МПа</td>
+                </tr>
+                <tr class="data__table-row">
                   <td class="data__table-cell data__table-cell--parameter">Абсолютна температура в кінці газопроводу
                   </td>
                   <td class="data__table-cell data__table-cell--marking">T<sub>к</sub></td>
@@ -870,6 +876,300 @@
       </section>
 
     </main>
+
+  </div>
+
+  <div class="modal__overlay modal__overlay--hidden"></div>
+  <div class="modal modal--hidden">
+    <button type="button" class="button modal__close" title="Закрити">
+      <svg class="modal__close--svg" width="20" height="20">
+        <use xlink:href="img/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <h3 class="section-heading">Параметри вашого ГПА</h3>
+    <div class="modal__inner">
+
+      <div class="data__item">
+        <label for="custom-nominal-power" class="data__label">Номінальна потужність ГТУ</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">Ne<sup>N</sup></dfn>
+          <input type="number" class="data__input data__input--custom-nominal-power" id="custom-nominal-power"
+            placeholder="25000" min="4000" max="30000" step="1" autocomplete="off" required>
+          <span class="data__input--dimension">кВт</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nominal-temperature" class="data__label">Номінальна температура повітря на вході в
+          ГТУ</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">T<sub>з</sub><sup>N</sup></dfn>
+          <input type="number" class="data__input data__input--custom-nominal-temperature"
+            id="custom-nominal-temperature" placeholder="288" min="270" max="310" step="1" autocomplete="off" required>
+          <span class="data__input--dimension">К</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-tech-state" class="data__label">Коефіцієнт, що враховує технічний стан ГТУ</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">К<sub>N</sub></dfn>
+          <input type="number" class="data__input data__input--custom-tech-state" id="custom-tech-state"
+            placeholder="0.85" min="0.5" max="1" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-air-impact" class="data__label">Коефіцієнт, що враховує вплив температури атм.
+          повітря</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">К<sub>t</sub></dfn>
+          <input type="number" class="data__input data__input--custom-air-impact" id="custom-air-impact"
+            placeholder="3.2" min="1" max="6" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-mech-efficiency" class="data__label">Механічний ККД нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">η<sub>м</sub></dfn>
+          <input type="number" class="data__input data__input--custom-mech-efficiency" id="custom-mech-efficiency"
+            placeholder="0.95" min="0.8" max="1" step="0.001" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-fuel-consumption" class="data__label">Номінальна витрата паливного газу</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">q<sub>пг</sub><sup>N</sup></dfn>
+          <input type="number" class="data__input data__input--custom-fuel-consumption" id="custom-fuel-consumption"
+            placeholder="3.28" min="1" max="15" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension">тис. м<sup>3</sup>/д</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-pressure-allow" class="data__label">Кінцений тиск при виході з нагнітального
+          патрубка</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">Р<sub>доп</sub></dfn>
+          <input type="number" class="data__input data__input--custom-pressure-allow" id="custom-pressure-allow"
+            placeholder="7.45" min="4" max="8" step="0.001" autocomplete="off" required>
+          <span class="data__input--dimension">МПа</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-pressure-boost" class="data__label">Ступінь підвищення тиску</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">ε</dfn>
+          <input type="number" class="data__input data__input--custom-pressure-boost" id="custom-pressure-boost"
+            placeholder="1.44" min="1" max="2" step="0.001" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nominal-rotate" class="data__label">Номінальна обертова частота ротора</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">n<sub>ном</sub></dfn>
+          <input type="number" class="data__input data__input--custom-nominal-rotate" id="custom-nominal-rotate"
+            placeholder="6500" min="2000" max="15000" step="1" autocomplete="off" required>
+          <span class="data__input--dimension">об/хв</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-zzv" class="data__label">Коефіцієнт стисливості газу при якому побудовані
+          зведені газодинамічні характеристики нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">z<sub>зв</sub></dfn>
+          <input type="number" class="data__input data__input--custom-zzv" id="custom-zzv" placeholder="0.888" min="0.6"
+            max="1" step="0.001" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-tzv" class="data__label">Температура газу на вході при якій побудовані
+          зведені газодинамічні характеристики нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">Т<sub>зв</sub></dfn>
+          <input type="number" class="data__input data__input--custom-tzv" id="custom-tzv" placeholder="288" min="260"
+            max="320" step="0.1" autocomplete="off" required>
+          <span class="data__input--dimension">К</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-rzv" class="data__label">Газова стала при якій побудовані
+          зведені газодинамічні характеристики нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">R<sub>зв</sub></dfn>
+          <input type="number" class="data__input data__input--custom-rzv" id="custom-rzv" placeholder="508" min="400"
+            max="650" step="0.1" autocomplete="off" required>
+          <span class="data__input--dimension">Дж/(кг·К)</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-qzvmin" class="data__label">Мінімальне значення зведеної продуктивності за умов
+          входу</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">Q<sub>зв</sub><sup>min</sup></dfn>
+          <input type="number" class="data__input data__input--custom-qzvmin" id="custom-qzvmin" placeholder="200"
+            min="50" max="1000" step="1" autocomplete="off" required>
+          <span class="data__input--dimension">м<sup>3</sup>/хв</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-qzvmax" class="data__label">Максимальне значення зведеної продуктивності за умов
+          входу</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">Q<sub>зв</sub><sup>max</sup></dfn>
+          <input type="number" class="data__input data__input--custom-qzvmax" id="custom-qzvmax" placeholder="500"
+            min="50" max="1000" step="1" autocomplete="off" required>
+          <span class="data__input--dimension">м<sup>3</sup>/хв</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nnzvmin" class="data__label">Мінімальне значення зведених відносних обертів
+          нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">[n/n<sub>н</sub>]<sub>зв</sub><sup>min</sup></dfn>
+          <input type="number" class="data__input data__input--custom-nnzvmin" id="custom-nnzvmin" placeholder="0.8"
+            min="0.5" max="1.3" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nnzvmax" class="data__label">Максимальне значення зведених відносних обертів
+          нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">[n/n<sub>н</sub>]<sub>зв</sub><sup>max</sup></dfn>
+          <input type="number" class="data__input data__input--custom-nnzvmax" id="custom-nnzvmax" placeholder="1.05"
+            min="1" max="1.5" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension"></span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-inlet-pressure1" class="data__label">Тиск на вході в перший нагнітач</label>
+        <div class="data__item--triple">
+          <div class="data__item-input">
+            <dfn class="data__input--definition">Р<sub>вх1</sub></dfn>
+            <input type="number" class="data__input data__input--custom-inlet-pressure1" id="custom-inlet-pressure1"
+              placeholder="6.08" min="3" max="8" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension">МПа</span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">Р<sub>вх2</sub></dfn>
+            <input type="number" class="data__input data__input--custom-inlet-pressure2" id="custom-inlet-pressure2"
+              placeholder="4.97" min="3" max="8" step="0.001" autocomplete="off">
+            <span class="data__input--dimension">МПа</span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">Р<sub>вх3</sub></dfn>
+            <input type="number" class="data__input data__input--custom-inlet-pressure3" id="custom-inlet-pressure3"
+              placeholder="4.32" min="3" max="8" step="0.001" autocomplete="off">
+            <span class="data__input--dimension">МПа</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-eps1" class="data__label">Номінальний ступінь підвищення тиску для мат. моделі</label>
+        <div class="data__item--triple">
+          <div class="data__item-input">
+            <dfn class="data__input--definition">ε<sub>1</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eps1" id="custom-eps1" placeholder="1.45"
+              min="1" max="1.9" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">ε<sub>2</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eps2" id="custom-eps2" placeholder="1.37"
+              min="1" max="1.9" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">ε<sub>3</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eps3" id="custom-eps3" placeholder="1.21"
+              min="1" max="1.9" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-eta1" class="data__label">Політропний ККД для мат. моделі</label>
+        <div class="data__item--triple">
+          <div class="data__item-input">
+            <dfn class="data__input--definition">η<sub>1</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eta1" id="custom-eta1" placeholder="0.84"
+              min="0.4" max="1" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">η<sub>2</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eta2" id="custom-eta2" placeholder="0.81"
+              min="0.4" max="1" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">η<sub>3</sub></dfn>
+            <input type="number" class="data__input data__input--custom-eta3" id="custom-eta3" placeholder="0.58"
+              min="0.4" max="1" step="0.001" autocomplete="off" required>
+            <span class="data__input--dimension"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nizv1" class="data__label">Зведена відносна внутрішня потужність для мат. моделі</label>
+        <div class="data__item--triple">
+          <div class="data__item-input">
+            <dfn class="data__input--definition">[N<sub>i</sub>/ρ<sub>вх</sub>]<sub>зв1</sub></dfn>
+            <input type="number" class="data__input data__input--custom-nizv1" id="custom-nizv1" placeholder="215"
+              min="100" max="1000" step="1" autocomplete="off" required>
+            <span class="data__input--dimension data__input--dimension-long">кВт/(кг/м<sup>3</sup>)</span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">[N<sub>i</sub>/ρ<sub>вх</sub>]<sub>зв2</sub></dfn>
+            <input type="number" class="data__input data__input--custom-nizv2" id="custom-nizv2" placeholder="238"
+              min="100" max="1000" step="1" autocomplete="off" required>
+            <span class="data__input--dimension data__input--dimension-long">кВт/(кг/м<sup>3</sup>)</span>
+          </div>
+          <div class="data__item-input">
+            <dfn class="data__input--definition">[N<sub>i</sub>/ρ<sub>вх</sub>]<sub>зв3</sub></dfn>
+            <input type="number" class="data__input data__input--custom-nizv3" id="custom-nizv3" placeholder="220"
+              min="100" max="1000" step="1" autocomplete="off" required>
+            <span class="data__input--dimension data__input--dimension-long">кВт/(кг/м<sup>3</sup>)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <label for="custom-nominal-consumption" class="data__label">Номінальна продуктивнісь нагнітача</label>
+        <div class="data__item-input">
+          <dfn class="data__input--definition">q<sub>н</sub></dfn>
+          <input type="number" class="data__input data__input--custom-nominal-consumption"
+            id="custom-nominal-consumption" placeholder="31.0" min="5" max="70" step="0.01" autocomplete="off" required>
+          <span class="data__input--dimension">млн. м<sup>3</sup>/д</span>
+        </div>
+      </div>
+
+      <div class="data__item">
+        <button type="button" class="button button--primary modal__apply">Підтвердити</button>
+      </div>
+    </div>
 
   </div>
 
