@@ -1,4 +1,5 @@
 import AbstractView from './abstract.js';
+import {GpuToSupercharger} from '../const.js';
 
 const createIncomeDataTemplate = (data) => {
   return (
@@ -269,6 +270,8 @@ export default class Income extends AbstractView {
     this._incomeDataModel = incomeDataModel;
 
     this._calcButtonClickHandler = this._calcButtonClickHandler.bind(this);
+    this._gpuSelectChangeHandler = this._gpuSelectChangeHandler.bind(this);
+    this._superchargerSelectChangeHandler = this._superchargerSelectChangeHandler.bind(this);
   }
 
   getTemplate() {
@@ -287,13 +290,69 @@ export default class Income extends AbstractView {
   _calcButtonClickHandler(evt) {
     evt.preventDefault();
 
-    if (!this.isUserDataValid()) {
-      this.shake();
-      return;
-    }
+    // if (!this.isUserDataValid()) {
+    //   this.shake();
+    //   return;
+    // }
 
     this._incomeDataModel.setData(this._collectData());
     this._callback.click();
+  }
+
+  setSuperchargerSelectChangeHandler(callback) {
+    this._callback.superchargerChange = callback;
+    this.getElement().querySelector(`#superchargers`).addEventListener(`change`, this._superchargerSelectChangeHandler);
+  }
+
+  _superchargerSelectChangeHandler(evt) {
+    evt.preventDefault();
+    const value = evt.target.value;
+    const neededGpu = Object
+      .entries(GpuToSupercharger)
+      .map(([gpu, chargers]) => {
+        const result = chargers.find((charger) => charger === value);
+
+        if (result) {
+          return gpu;
+        } else {
+          return null;
+        }
+      })
+      .find((item) => !!item);
+
+    const gpuOptions = this.getElement().querySelector(`#gpu`).querySelectorAll(`option`);
+
+    [...gpuOptions].find((option) => option.value === neededGpu).selected = true;
+
+    this._callback.superchargerChange(neededGpu === `custom`);
+  }
+
+  setGpuSelectChangeHandler(callback) {
+    this._callback.gpuChange = callback;
+    this.getElement().querySelector(`#gpu`).addEventListener(`change`, this._gpuSelectChangeHandler);
+  }
+
+  _gpuSelectChangeHandler(evt) {
+    evt.preventDefault();
+    const value = evt.target.value;
+    const neededSuperchargers = GpuToSupercharger[value];
+
+    const superchargersOptions = this.getElement().querySelector(`#superchargers`).querySelectorAll(`option`);
+
+    [...superchargersOptions]
+      .map((option) => {
+        option.disabled = true;
+        return option;
+      })
+      .filter((option) => neededSuperchargers.includes(option.value))
+      .map((option, index) => {
+        if (index === 0) {
+          option.selected = true;
+        }
+        option.disabled = false;
+      });
+
+    this._callback.gpuChange(neededSuperchargers.includes(`custom`));
   }
 
   _collectData() {
