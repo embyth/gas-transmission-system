@@ -1,13 +1,12 @@
-'use strict';
+import IncomeDataModel from './model/income.js';
+import ResultsModel from './model/results.js';
+import PagePresenter from './presenter/page.js';
 
-(function () {
-  // Активація першочергових функцій
-  var DOMLoadedHandler = function () {
-    window.sections.activate();
-    window.hamburger.activate();
-    window.select.handle();
-    window.modal.activate();
-  };
+const contentContainer = document.querySelector(`#site-content`);
 
-  document.addEventListener('DOMContentLoaded', DOMLoadedHandler);
-})();
+const incomeDataModel = new IncomeDataModel();
+const resultsModel = new ResultsModel();
+
+const pagePresenter = new PagePresenter(contentContainer, incomeDataModel, resultsModel);
+
+pagePresenter.init();
