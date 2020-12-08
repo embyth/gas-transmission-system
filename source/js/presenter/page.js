@@ -1,10 +1,11 @@
 import IntroView from '../view/intro.js';
 import IncomeView from '../view/income.js';
 import ResultsView from '../view/results.js';
+import ModalView from '../view/modal.js';
 import {calculate} from '../utils/calculate.js';
 import {blockBodyScroll, unblockBodyScroll, isEscKey} from '../utils/common.js';
 import {render, remove} from '../utils/render.js';
-import {RenderPosition, SECTION} from '../const.js';
+import {RenderPosition, SECTION, ModalAction} from '../const.js';
 
 export default class Page {
   constructor(container, incomeDataModel, resultsModel) {
@@ -13,10 +14,12 @@ export default class Page {
     this._resultsModel = resultsModel;
 
     this._isMenuOpen = false;
+    this._isModalOpen = ModalAction.CLOSE;
     this._currentSection = SECTION.INTRO;
 
     this._introComponent = new IntroView();
     this._incomeComponent = new IncomeView(this._incomeDataModel);
+    this._modalComponent = new ModalView(this._incomeDataModel);
     this._resultsComponent = new ResultsView(this._resultsModel);
 
     this._hamburgerNode = document.querySelector(`.hamburger`);
@@ -33,8 +36,10 @@ export default class Page {
     this._handleBeginButtonClick = this._handleBeginButtonClick.bind(this);
     this._handleApplyButtonClick = this._handleApplyButtonClick.bind(this);
     this._handleCalcButtonClick = this._handleCalcButtonClick.bind(this);
-    this._handleSuperchargerSelectChange = this._handleSuperchargerSelectChange.bind(this);
-    this._handleGpuSelectChange = this._handleGpuSelectChange.bind(this);
+    this._handleSelectChange = this._handleSelectChange.bind(this);
+    this._handleModalClose = this._handleModalClose.bind(this);
+    this._handleModalOpen = this._handleModalOpen.bind(this);
+    this._modalKeyDownHandler = this._modalKeyDownHandler.bind(this);
   }
 
   init() {
@@ -55,8 +60,9 @@ export default class Page {
       case SECTION.DATA:
         render(this._contentContainer, this._incomeComponent, RenderPosition.BEFOREEND);
         this._incomeComponent.setCalcButtonClickHandler(this._handleCalcButtonClick);
-        this._incomeComponent.setGpuSelectChangeHandler(this._handleGpuSelectChange);
-        this._incomeComponent.setSuperchargerSelectChangeHandler(this._handleSuperchargerSelectChange);
+        this._incomeComponent.setGpuSelectChangeHandler(this._handleSelectChange);
+        this._incomeComponent.setSuperchargerSelectChangeHandler(this._handleSelectChange);
+        this._incomeComponent.setModalOpenerClickHandler(this._handleModalOpen);
         break;
       case SECTION.RESULTS:
         render(this._contentContainer, this._resultsComponent, RenderPosition.BEFOREEND);
@@ -64,6 +70,30 @@ export default class Page {
     }
 
     this._currentSection = type;
+  }
+
+  _modalViewHandler(isModalOpen) {
+    if (this._isModalOpen === isModalOpen) {
+      return;
+    }
+
+    switch (isModalOpen) {
+      case ModalAction.OPEN:
+        blockBodyScroll();
+        render(document.body, this._modalComponent, RenderPosition.BEFOREEND);
+        this._modalComponent.animateAppearance();
+        this._modalComponent.setCloseButtonClickHandler(this._handleModalClose);
+        this._modalComponent.setApplyButtonClickHandler(this._handleApplyButtonClick);
+        document.addEventListener(`keydown`, this._modalKeyDownHandler);
+        break;
+      case ModalAction.CLOSE:
+        unblockBodyScroll();
+        remove(this._modalComponent);
+        document.removeEventListener(`keydown`, this._modalKeyDownHandler);
+        break;
+    }
+
+    this._isModalOpen = isModalOpen;
   }
 
   _clearPage() {
@@ -91,21 +121,40 @@ export default class Page {
   }
 
   _handleApplyButtonClick() {
-
+    this._handleModalClose();
   }
 
   _handleCalcButtonClick() {
-    calculate(this._incomeDataModel.getData(), this._resultsModel);
-    [...this._navigationButtons].find((button) => button.dataset.section === SECTION.RESULTS).disabled = false;
-    this._pageSectionHandler(SECTION.RESULTS);
+    if (this._incomeComponent.isCustomGPU() && !this._modalComponent.isUserDataValid()) {
+      this._handleModalOpen();
+    } else {
+      calculate(this._incomeDataModel.getData(), this._resultsModel);
+      [...this._navigationButtons].find((button) => button.dataset.section === SECTION.RESULTS).disabled = false;
+      this._pageSectionHandler(SECTION.RESULTS);
+    }
   }
 
-  _handleSuperchargerSelectChange(isCustomSupercharger) {
-    console.log(isCustomSupercharger);
+  _handleSelectChange(isCustom) {
+    if (isCustom) {
+      this._incomeComponent.showModalOpener();
+      this._modalViewHandler(ModalAction.OPEN);
+    } else {
+      this._incomeComponent.hideModalOpener();
+    }
   }
 
-  _handleGpuSelectChange(isCustomGpu) {
-    console.log(isCustomGpu);
+  _handleModalClose() {
+    this._modalViewHandler(ModalAction.CLOSE);
+  }
+
+  _handleModalOpen() {
+    this._modalViewHandler(ModalAction.OPEN);
+  }
+
+  _modalKeyDownHandler(evt) {
+    if (isEscKey(evt)) {
+      this._handleModalClose();
+    }
   }
 
   _navButtonsClickHandler(evt) {

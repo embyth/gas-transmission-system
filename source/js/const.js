@@ -18,6 +18,11 @@ export const SECTION = {
   RESULTS: `results`,
 };
 
+export const ModalAction = {
+  OPEN: `open`,
+  CLOSE: `close`,
+};
+
 export const ErrorMessage = {
   VALUE_MISSING: `Введіть дані`,
   RANGE_OVERFLOW: `Значення не може бути більше `,
