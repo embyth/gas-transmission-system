@@ -192,7 +192,7 @@ const createIncomeDataTemplate = (data) => {
                 <div class="data__item-input">
                   <dfn class="data__input--definition">E</dfn>
                   <input type="number" class="data__input data__input--hydraulic-coef" id="hydraulic-coef"
-                    placeholder="95" min="1" max="100" step="0.01" autocomplete="off" requiredvalue="${coefE ? coefE * 100 : ``}">
+                    placeholder="95" min="1" max="100" step="0.01" autocomplete="off" required value="${coefE ? coefE : ``}">
                   <span class="data__input--dimension">%</span>
                 </div>
               </div>
@@ -222,7 +222,7 @@ const createIncomeDataTemplate = (data) => {
                 <div class="data__item-input">
                   <dfn class="data__input--definition">T<sub>вх</sub></dfn>
                   <input type="number" class="data__input data__input--temperature-inlet" id="temperature-inlet"
-                    placeholder="18" min="0" max="50" step="0.1" autocomplete="off" required value="${Tvx ? Tvx - 273 : ``}">
+                    placeholder="18" min="0" max="50" step="0.1" autocomplete="off" required value="${Tvx ? Tvx : ``}">
                   <span class="data__input--dimension"><sup>o</sup>C</span>
                 </div>
               </div>
@@ -233,7 +233,7 @@ const createIncomeDataTemplate = (data) => {
                 <div class="data__item-input">
                   <dfn class="data__input--definition">T<sub>гр</sub></dfn>
                   <input type="number" class="data__input data__input--temperature-ground" id="temperature-ground"
-                    placeholder="16.6" min="-10" max="30" step="0.1" autocomplete="off" required value="${Tgr ? Tgr - 273 : ``}">
+                    placeholder="16.6" min="-10" max="30" step="0.1" autocomplete="off" required value="${Tgr ? Tgr : ``}">
                   <span class="data__input--dimension"><sup>o</sup>C</span>
                 </div>
               </div>
@@ -243,7 +243,7 @@ const createIncomeDataTemplate = (data) => {
                 <div class="data__item-input">
                   <dfn class="data__input--definition">T<sub>атм</sub></dfn>
                   <input type="number" class="data__input data__input--temperature-air" id="temperature-air"
-                    placeholder="20.7" min="-15" max="40" step="0.1" autocomplete="off" required value="${Ta ? Ta : ``}"Ta>
+                    placeholder="20.7" min="-15" max="40" step="0.1" autocomplete="off" required value="${Ta ? Ta : ``}">
                   <span class="data__input--dimension"><sup>o</sup>C</span>
                 </div>
               </div>
@@ -273,7 +273,7 @@ const createIncomeDataTemplate = (data) => {
               <div class="data__item">
                 <label for="gpu" class="data__label">Вибір газоперекачувального агрегату</label>
                 <div class="data__item-input data__item-input--select">
-                  <button type="button" class="button data__modal-opener visually-hidden"
+                  <button type="button" class="button data__modal-opener ${gpu === `custom` && supercharger === `custom` ? `` : `data__modal-opener--hidden`}"
                     title="Відкрити параметри ГПА">
                     <svg class="data__modal-opener--svg" width="20" height="20">
                       <use xlink:href="img/sprite.svg#icon-show"></use>
@@ -314,31 +314,45 @@ export default class Income extends AbstractView {
     this._calcButtonClickHandler = this._calcButtonClickHandler.bind(this);
     this._gpuSelectChangeHandler = this._gpuSelectChangeHandler.bind(this);
     this._superchargerSelectChangeHandler = this._superchargerSelectChangeHandler.bind(this);
+    this._modalOpenerClickHandler = this._modalOpenerClickHandler.bind(this);
   }
 
   getTemplate() {
     return createIncomeDataTemplate(this._getData());
   }
 
-  setCalcButtonClickHandler(callback) {
-    this._callback.click = callback;
-    this.getElement().querySelector(`.data__button--calc`).addEventListener(`click`, this._calcButtonClickHandler);
+  isCustomGPU() {
+    return this.getElement().querySelector(`#gpu`).value === `custom` && this.getElement().querySelector(`#superchargers`).value === `custom`;
+  }
+
+  showModalOpener() {
+    this.getElement().querySelector(`.data__modal-opener`).classList.remove(`data__modal-opener--hidden`);
+  }
+
+  hideModalOpener() {
+    this.getElement().querySelector(`.data__modal-opener`).classList.add(`data__modal-opener--hidden`);
   }
 
   _getData() {
     return this._incomeDataModel.getData();
   }
 
+  setCalcButtonClickHandler(callback) {
+    this._callback.calcClick = callback;
+    this.getElement().querySelector(`.data__button--calc`).addEventListener(`click`, this._calcButtonClickHandler);
+  }
+
   _calcButtonClickHandler(evt) {
     evt.preventDefault();
 
-    // if (!this.isUserDataValid()) {
-    //   this.shake();
-    //   return;
-    // }
-
     this._incomeDataModel.setData(this._collectData());
-    this._callback.click();
+
+    if (!this.isUserDataValid()) {
+      this.shake();
+      return;
+    }
+
+    this._callback.calcClick();
   }
 
   setSuperchargerSelectChangeHandler(callback) {
@@ -397,6 +411,16 @@ export default class Income extends AbstractView {
     this._callback.gpuChange(neededSuperchargers.includes(`custom`));
   }
 
+  setModalOpenerClickHandler(callback) {
+    this._callback.modalOpenerClick = callback;
+    this.getElement().querySelector(`.data__modal-opener`).addEventListener(`click`, this._modalOpenerClickHandler);
+  }
+
+  _modalOpenerClickHandler(evt) {
+    evt.preventDefault();
+    this._callback.modalOpenerClick();
+  }
+
   _collectData() {
     return {
       ch4: +this.getElement().querySelector(`.data__input--methane`).value,
@@ -410,11 +434,11 @@ export default class Income extends AbstractView {
       bSt: +this.getElement().querySelector(`.data__input--wall`).value,
       L: +this.getElement().querySelector(`.data__input--length`).value,
       Q: +this.getElement().querySelector(`.data__input--consumption`).value,
-      coefE: +this.getElement().querySelector(`.data__input--hydraulic-coef`).value / 100,
+      coefE: +this.getElement().querySelector(`.data__input--hydraulic-coef`).value,
       Patm: +this.getElement().querySelector(`.data__input--pressure-atm`).value,
       Pvx: +this.getElement().querySelector(`.data__input--pressure-inlet`).value,
-      Tvx: +this.getElement().querySelector(`.data__input--temperature-inlet`).value + 273,
-      Tgr: +this.getElement().querySelector(`.data__input--temperature-ground`).value + 273,
+      Tvx: +this.getElement().querySelector(`.data__input--temperature-inlet`).value,
+      Tgr: +this.getElement().querySelector(`.data__input--temperature-ground`).value,
       Ta: +this.getElement().querySelector(`.data__input--temperature-air`).value,
       PkNeed: +this.getElement().querySelector(`.data__input--pressure-end`).value,
       coefK: +this.getElement().querySelector(`.data__input--heat-coef`).value,
