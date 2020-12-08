@@ -4,10 +4,6 @@ export default class IncomeData {
   }
 
   setData(data) {
-    this._incomeData = Object.assign({}, data);
-  }
-
-  addData(data) {
     this._incomeData = Object.assign(this._incomeData, data);
   }
 

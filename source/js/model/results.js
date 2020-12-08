@@ -4,7 +4,7 @@ export default class ResultsData {
   }
 
   setResults(results) {
-    this._results = Object.assign({}, results);
+    this._results = Object.assign(this._results, results);
   }
 
   getResults() {
