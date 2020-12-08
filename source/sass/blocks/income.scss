@@ -81,11 +81,16 @@
 }
 
 .data__modal-opener {
+  display: block;
   position: absolute;
   right: -30px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+
+  &--hidden {
+    display: none;
+  }
 
   @media ($tablet) {
     right: unset;
